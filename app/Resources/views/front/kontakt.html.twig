@@ -3,50 +3,44 @@
 
 {% block body %}
     <div class="breadcrumb">
-		<h2>Kontakt</h2>
-	</div>
-	
-	<div class="map">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2834.1578663710607!2d19.700492665207555!3d44.73679597909901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475bcb3c0250c743%3A0xb63c516e0e4822d9!2z0KbRgNC60LLQsCDQodCy0LXRgtC1INGC0YDQvtGY0LjRhtC1!5e0!3m2!1ssr!2srs!4v1510150835487" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>	</div>
+        <h2>Kontakt</h2>
+    </div>
 
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="recent">
-						<h3>Send us a message</h3>
-					</div>		
-					<form role="form">
-						<div class="form-group">						
-							<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-						</div>
-						
-						<textarea class="form-control" rows="8"></textarea>
-						<button type="submit" class="btn btn-default">Submit</button>
-					</form>
-				</div>
-				
-				<div class="col-lg-6">
-					<div class="recent">
-						<h3>Get in touch with us</h3>
-					</div>
-					<div class="">
-						<p>Nam liber tempor cum soluta nobis eleifend option 
-						congue nihil imperdiet doming id quod mazim placerat
-						facer possim assum. Typi non habent claritatem insitam;
-						est usus legentis in iis qui facit eorum.</p>
-						<p>Nam liber tempor cum soluta nobis eleifend option 
-						congue nihil imperdiet doming id quod mazim placerat
-						facer possim assum. Typi non habent claritatem insitam;
-						est usus legentis in iis qui facit eorum.</p>
-						
-						<h4>Address:</h4>Little Lonsdale St, New York<br>
-						<h4>Telephone:</h4>345 578 59 45 416</br>
-						<h4>Fax:</h4>123 456 789
-					</div>										
-				</div>			
-			</div>
-		</div>
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2834.1578663710607!2d19.700492665207555!3d44.73679597909901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475bcb3c0250c743%3A0xb63c516e0e4822d9!2z0KbRgNC60LLQsCDQodCy0LXRgtC1INGC0YDQvtGY0LjRhtC1!5e0!3m2!1ssr!2srs!4v1510150835487" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>	</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="recent">
+                    <h3>Send us a message</h3>
+                </div>		
+                <form role="form">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </form>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="recent">
+                    <h3>Get in touch with us</h3>
+                </div>
+                <div class="">
+                    <p>Nam liber tempor cum soluta nobis eleifend option 
+                        congue nihil imperdiet doming id quod mazim placerat
+                        facer possim assum. Typi non habent claritatem insitam;
+                        est usus legentis in iis qui facit eorum.</p>
+                    <p>Nam liber tempor cum soluta nobis eleifend option 
+                        congue nihil imperdiet doming id quod mazim placerat
+                        facer possim assum. Typi non habent claritatem insitam;
+                        est usus legentis in iis qui facit eorum.</p>
+
+                    <h4>Address:</h4>Little Lonsdale St, New York<br>
+                    <h4>Telephone:</h4>345 578 59 45 416</br>
+                    <h4>Fax:</h4>123 456 789
+                </div>										
+            </div>			
+        </div>
+    </div>
 {% endblock %}
