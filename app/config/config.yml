@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -67,3 +67,19 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+# Fos User
+fos_user:
+    db_driver: orm 
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: mtomic62@gmail.com
+        sender_name: DO
+        
+easy_admin:
+    entities:
+        - AppBundle\Entity\Gallery
+        - AppBundle\Entity\Event
+        - AppBundle\Entity\Message
+        

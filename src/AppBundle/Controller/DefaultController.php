@@ -14,28 +14,28 @@ class DefaultController extends Controller {
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request) {
+    public function indexAction() {
         return $this->render('front/index.html.twig');
     }
 
     /**
      * @Route("/onama", name="onama")
      */
-    public function aboutAction(Request $request) {
+    public function aboutAction() {
         return $this->render('front/onama.html.twig');
     }
 
     /**
      * @Route("/dogadjaji", name="dogadjaji")
      */
-    public function eventAction(Request $request) {
+    public function eventAction() {
         return $this->render('front/dogadjaji.html.twig');
     }
 
     /**
      * @Route("/galerija", name="galerija")
      */
-    public function galleryAction(Request $request) {
+    public function galleryAction() {
         return $this->render('front/galerija.html.twig');
     }
 
