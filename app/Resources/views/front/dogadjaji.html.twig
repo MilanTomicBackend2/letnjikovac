@@ -8,7 +8,14 @@
         <h2>Events</h2>
     </div>
 
+
+                            
+                            
+                         
+                            
     <div class="events">
+     {% if event is not empty %}   
+         {% for eve in event %}
         <div class="container">
             <div class="col-md-4">
                 <div class="slider">
@@ -22,21 +29,15 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <h2>Jessa's 5th Birthday</h2>
-                Sunday, September 26th at 7:00 pm
+                <h2>{{ eve.title }}</h2>
+                {{eve.datetime|date('Y-m-d')}}
                 <p>
-                    praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias 
-                    excepturi sint Voluptatem accusantium doloremque laudantium sprea totam rem aperiam
-                    praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias 
-                    excepturi sint Voluptatem accusantium doloremque laudantium sprea totam rem aperiam
-                    <br>			
-                    praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias 
-                    excepturi sint Voluptatem accusantium doloremque laudantium sprea totam rem aperiam
-                    praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias 
-                    excepturi sint Voluptatem accusantium doloremque laudantium sprea totam rem aperiam
+                    {{eve.description}}
                 </p>		
             </div>
         </div>
+           {% endfor %}
+                        {% endif %}
 
         <div class="container">
             <div class="col-md-4">
