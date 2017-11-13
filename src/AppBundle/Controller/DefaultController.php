@@ -6,7 +6,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Message;
-use AppBundle\Form\MessageType;
+use AppBundle\Entity\Event;
+use AppBundle\Entity\Gallery;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+
+
+
+
 
 
 class DefaultController extends Controller {
@@ -29,44 +35,49 @@ class DefaultController extends Controller {
      * @Route("/dogadjaji", name="dogadjaji")
      */
     public function eventAction() {
-        return $this->render('front/dogadjaji.html.twig');
+        
+        $em        = $this->getDoctrine()->getManager();
+        $event = $em->getRepository(Event::class)->findAll();
+        return $this->render('front/dogadjaji.html.twig', array(
+                    'event' => $event
+                        ));
     }
 
     /**
      * @Route("/galerija", name="galerija")
      */
     public function galleryAction() {
-        return $this->render('front/galerija.html.twig');
+         $em        = $this->getDoctrine()->getManager();
+        $gallery = $em->getRepository(Gallery::class)->findAll();
+        return $this->render('front/galerija.html.twig', array(
+                    'gallery' => $gallery
+                        ));
     }
 
-    /**
+     /**
+     * Creates a new message entity.
+     *
      * @Route("/kontakt", name="kontakt")
+     * @Method({"GET", "POST"})
      */
-    public function contactAction(Request $request) {
-
-
+    public function newAction(Request $request)
+    {
         $message = new Message();
-        $form = $this->createForm(MessageType::class, $message);
-        
+        $form = $this->createForm('AppBundle\Form\MessageType', $message);
+        $form->handleRequest($request);
 
-        if ($request->isMethod(Request::METHOD_POST)) {
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($message);
+            $em->flush();
 
-            $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {
-                $message = $form->getData();
-                $em   = $this->getDoctrine()->getManager();
-                $em->persist($message); 
-                $em->flush();
-            }
-  
-            return $this->redirectToRoute('kontakt');
+            return $this->redirectToRoute('kontakt', array('id' => $message->getId()));
         }
 
-        return $this->render('front/kontakt.html.twig'
-                        , array(
-                    'form' => $form->createView()
-                        )
-        );
+        return $this->render('front/kontakt.html.twig', array(
+            'message' => $message,
+            'form' => $form->createView(),
+        ));
     }
 
 }
