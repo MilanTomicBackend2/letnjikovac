@@ -78,6 +78,7 @@ fos_user:
         sender_name: DO
         
 easy_admin:
+    site_name: 'Летњиковац'
     entities:
         - AppBundle\Entity\Gallery
         - AppBundle\Entity\Event
