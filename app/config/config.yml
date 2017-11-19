@@ -7,6 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    app.path.gallery_image: /bundle/app/img/gallery
 
 framework:
     #esi: ~
@@ -80,7 +81,32 @@ fos_user:
 easy_admin:
     site_name: 'Летњиковац'
     entities:
-        - AppBundle\Entity\Gallery
-        - AppBundle\Entity\Event
-        - AppBundle\Entity\Message
-        
+        Gallery:
+            class: AppBundle\Entity\Gallery
+            form:
+                fields:
+                    - title
+                    - { property: 'imageFile', type: 'file', label: 'Upload image', help: 'Select file to upload' }
+        Event:
+            class: AppBundle\Entity\Event
+            form:
+                fields:
+                    - title
+                    - datetime
+                    - description
+                     
+        Message:
+            class: AppBundle\Entity\Message
+            form:
+                fields:
+                    - email
+                    - title
+                    - text
+                                  
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        gallery_image:
+            uri_prefix:         '%app.path.gallery_image%'
+            upload_destination: %kernel.root_dir%/../web/bundle/app/img/gallery

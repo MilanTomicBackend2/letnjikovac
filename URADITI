@@ -2,3 +2,19 @@
 Footer linkovsti na neke tekstove po internetu gde pise nesto o Hramu.
 Integrisati Vich bundle.
 Prvo sacuvati uradjeno za svaki slucaj.
+
+
+
+  <article class="col-md-4 isotopeItem webdesign">
+                                {% if gallery is not empty %}   
+                                    {% for gal in gallery %}
+                                        <h2>{{gal.title}}</h2>
+                                        <img src="{{ vich_uploader_asset(gal, 'imageFile') }}" alt="" /> 
+                                         
+    
+
+                                     
+                                    
+                                {% endfor %}
+                            {% endif %}
+                           </article>
