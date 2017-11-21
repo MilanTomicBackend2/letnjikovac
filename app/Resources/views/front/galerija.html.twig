@@ -14,90 +14,69 @@
     <div class="breadcrumb">
         <h2>Галерија</h2>
     </div>
-    <nav id="filter" class="col-md-12 text-center">
-                    <ul>
-                        <li><a href="#" class="current btn-theme btn-small" data-filter="*">All</a></li>
-                        <li><a href="#"  class="btn-theme btn-small" data-filter=".webdesign" >Events</a></li>
-                        <li><a href="#"  class="btn-theme btn-small" data-filter=".photography">Photography</a></li>
-                        <li ><a href="#" class="btn-theme btn-small" data-filter=".print">Family</a></li>
-                    </ul>
-                </nav>
-{% if gallery is not empty %}   
-                                    {% for gal in gallery %}
-    <section id="section-works" class="section appear clearfix">
-        <div class="container">						
-            <div class="row">
-                
-                  
-                                       
-               
-                <div class="col-md-12">
+    
+    {% if gallery is not empty %}   
+        {% for gal in gallery %}
+            <section id="section-works" class="section appear clearfix">
+                <div class="container">						
                     <div class="row">
-                        <div class="portfolio-items isotopeWrapper clearfix" id="3">							  
-                            <article class="col-md-4 isotopeItem webdesign">
-                                <div class="portfolio-item">
-                                    <div class="wow rotateInUpLeft" data-animation-delay="4.8s">
-                                        <img src="{{ vich_uploader_asset(gal, 'imageFile') }}" alt="welcome" />
-                                    </div>
-                                    <div class="portfolio-desc align-center">
-                                        <div class="folio-info">
-                                            <h5><a href="#">{{gal.title}}</a></h5>
-                                            <a href="{{ vich_uploader_asset(gal, 'imageFile') }}" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                                        </div>										   
-                                    </div>
-                                </div>
-                            </article>
 
-                            <article class="col-md-4 isotopeItem photography">
-                                <div class="portfolio-item">
-                                    <div class="wow bounceIn">
-                                        <img src="{{ vich_uploader_asset(gal, 'imageFile') }}" alt="" />
-                                    </div>
-                                    <div class="portfolio-desc align-center">
-                                        <div class="folio-info">
-                                            <h5><a href="#">{{gal.title}}</a></h5>
-                                            <a href="{{ vich_uploader_asset(gal, 'imageFile') }}" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                                        </div>										   
-                                    </div>
-                                </div>
-                            </article>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="portfolio-items isotopeWrapper clearfix" id="3">							  
+                                    <article class="col-md-4 isotopeItem webdesign">
+                                        <div class="portfolio-item">
+                                            <div class="wow rotateInUpLeft" data-animation-delay="4.8s">
+                                                <img src="{{ vich_uploader_asset(gal, 'imageFile') }}" alt="welcome" />
+                                            </div>
+                                            <div class="portfolio-desc align-center">
+                                                <div class="folio-info">
+                                                    <h5><a href="">{{gal.title}}</a></h5>
+                                                    <a href="{{ vich_uploader_asset(gal, 'imageFile') }}" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
+                                                </div>										   
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                    <article class="col-md-4 isotopeItem photography">
+                                        <div class="portfolio-item">
+                                            <div class="wow bounceIn">
+                                                <img src="{{ vich_uploader_asset(gal, 'imageFile') }}" alt="" />
+                                            </div>
+                                            <div class="portfolio-desc align-center">
+                                                <div class="folio-info">
+                                                    <h5><a href="">{{gal.title}}</a></h5>
+                                                    <a href="{{ vich_uploader_asset(gal, 'imageFile') }}" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
+                                                </div>										   
+                                            </div>
+                                        </div>
+                                    </article>
 
 
-                            <article class="col-md-4 isotopeItem photography">
-                                <div class="portfolio-item">
-                                    <div class="wow rotateInDownRight">
-                                        <img src="{{ vich_uploader_asset(gal, 'imageFile') }}" alt="" />
-                                    </div>	
-                                    <div class="portfolio-desc align-center">
-                                        <div class="folio-info">
-                                            <h5><a href="#">{{gal.title}}</a></h5>
-                                            <a href="{{ vich_uploader_asset(gal, 'imageFile') }}" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                                        </div>										   
-                                    </div>
-                                </div>
-                            </article>
+                                    <article class="col-md-4 isotopeItem photography">
+                                        <div class="portfolio-item">
+                                            <div class="wow rotateInDownRight">
+                                                <img src="{{ vich_uploader_asset(gal, 'imageFile') }}" alt="" />
+                                            </div>	
+                                            <div class="portfolio-desc align-center">
+                                                <div class="folio-info">
+                                                    <h5><a href="">{{gal.title}}</a></h5>
+                                                    <a href="{{ vich_uploader_asset(gal, 'imageFile') }}" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
+                                                </div>										   
+                                            </div>
+                                        </div>
+                                    </article>
 
-                            
 
-                            
+                                </div>                                       
+                            </div>                                     
+                        </div>
+                    </div>
 
-                            
 
-                            
-
-                            
-
-                            
-                                 
-                        </div>                                       
-                    </div>                                     
                 </div>
-            </div>
-                                                        
-                         
-        </div>
-                                                 
-    </section>
-            {% endfor %}
-                            {% endif %}                                 
+
+            </section>
+        {% endfor %}
+    {% endif %}                                 
 {% endblock %}
