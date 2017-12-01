@@ -10,11 +10,6 @@ use AppBundle\Entity\Event;
 use AppBundle\Entity\Gallery;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
-
-
-
-
-
 class DefaultController extends Controller {
 
     /**
@@ -34,34 +29,51 @@ class DefaultController extends Controller {
     /**
      * @Route("/dogadjaji", name="dogadjaji")
      */
-    public function eventAction() {
-        
-        $em        = $this->getDoctrine()->getManager();
+    public function eventAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
         $event = $em->getRepository(Event::class)->findAll();
+
+        /**
+         * @var $paginator \Knp\Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+                $event, $request->query->getInt('page', 1), $request->query->getInt('limit', 3)
+        );
+
         return $this->render('front/dogadjaji.html.twig', array(
-                    'event' => $event
-                        ));
+                    'event' => $result
+        ));
     }
 
     /**
      * @Route("/galerija", name="galerija")
      */
-    public function galleryAction() {
-         $em        = $this->getDoctrine()->getManager();
+    public function galleryAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
         $gallery = $em->getRepository(Gallery::class)->findAll();
+
+        /**
+         * @var $paginator \Knp\Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+                $gallery, $request->query->getInt('page', 1), $request->query->getInt('limit', 3)
+        );
+//        dump(get_class($paginator));
         return $this->render('front/galerija.html.twig', array(
-                    'gallery' => $gallery
-                        ));
+                    'gallery' => $result
+        ));
     }
 
-     /**
+    /**
      * Creates a new message entity.
      *
      * @Route("/kontakt", name="kontakt")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $message = new Message();
         $form = $this->createForm('AppBundle\Form\MessageType', $message);
         $form->handleRequest($request);
@@ -75,8 +87,8 @@ class DefaultController extends Controller {
         }
 
         return $this->render('front/kontakt.html.twig', array(
-            'message' => $message,
-            'form' => $form->createView(),
+                    'message' => $message,
+                    'form' => $form->createView(),
         ));
     }
 

@@ -14,7 +14,7 @@
     <div class="breadcrumb">
         <h2>Галерија</h2>
     </div>
-    
+
     {% if gallery is not empty %}   
         {% for gal in gallery %}
             <section id="section-works" class="section appear clearfix">
@@ -77,6 +77,10 @@
                 </div>
 
             </section>
+
         {% endfor %}
-    {% endif %}                                 
+    {% endif %} 
+    <div class="navigation">
+        {{ knp_pagination_render(gallery) }}
+    </div>        
 {% endblock %}

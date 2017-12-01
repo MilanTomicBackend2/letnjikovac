@@ -9,44 +9,38 @@
     </div>
 
 
-                            
-                            
-                         
-                            
-    <div class="events">
-     {% if event is not empty %}   
-         {% for eve in event %}
-        <div class="container">
-            <div class="col-md-4">
-                <div class="slider">
-                    <div class="img-responsive">
-                        <ul class="bxslider">				
-                            <img src="{{ vich_uploader_asset(eve, 'imageFile') }}" alt="" />								
-                            <li><img src="../bundles/app/img/test.jpg" alt=""/></li>	
-                            <li><img src="../bundles/app/img/test1.jpg" alt=""/></li>			
-                        </ul>
-                    </div>	
-                </div>
-            </div>
-            <div class="col-md-8">
-                <h2>{{ eve.title }}</h2>
-                {{eve.datetime|date('Y-m-d')}}
-                <p>
-                    {{eve.description}}
-                </p>		
-            </div>
-        </div>
-           {% endfor %}
-                        {% endif %}
 
-        <nav>
-            <ul class="pagination">
-                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">4 <span class="sr-only">(current)</span></a></li>
-            </ul>
-        </nav>
+
+
+
+    <div class="events">
+        {% if event is not empty %}   
+            {% for eve in event %}
+                <div class="container">
+                    <div class="col-md-4">
+                        <div class="slider">
+                            <div class="img-responsive">
+                                <ul class="bxslider">				
+                                    <img src="{{ vich_uploader_asset(eve, 'imageFile') }}" alt="" />								
+                                    <li><img src="../bundles/app/img/test.jpg" alt=""/></li>	
+                                    <li><img src="../bundles/app/img/test1.jpg" alt=""/></li>			
+                                </ul>
+                            </div>	
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <h2>{{ eve.title }}</h2>
+                        {{eve.datetime|date('Y-m-d')}}
+                        <p>
+                            {{eve.description}}
+                        </p>		
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="navigation">
+            {{ knp_pagination_render(event) }}
+        </div>   
     </div>
 {% endblock %}
