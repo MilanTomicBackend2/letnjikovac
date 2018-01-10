@@ -32,14 +32,16 @@ class DefaultController extends Controller {
     public function eventAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository(Event::class)->findAll();
+        //$event = $em->getRepository(Event::class)->findAll();
+        $dql = " SELECT ev FROM AppBundle:Event ev ";
+        $query = $em->createQuery($dql);
 
         /**
          * @var $paginator \Knp\Component\Pager\Paginator
          */
         $paginator = $this->get('knp_paginator');
         $result = $paginator->paginate(
-                $event, $request->query->getInt('page', 1), $request->query->getInt('limit', 3)
+                $query, $request->query->getInt('page', 1), $request->query->getInt('limit', 3)
         );
 
         return $this->render('front/dogadjaji.html.twig', array(
@@ -52,14 +54,17 @@ class DefaultController extends Controller {
      */
     public function galleryAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $gallery = $em->getRepository(Gallery::class)->findAll();
+        //$gallery = $em->getRepository(Gallery::class)->findAll();
+        $dql = " SELECT img FROM AppBundle:Gallery img ";
+        $query = $em->createQuery($dql);
+        
 
         /**
          * @var $paginator \Knp\Component\Pager\Paginator
          */
         $paginator = $this->get('knp_paginator');
         $result = $paginator->paginate(
-                $gallery, $request->query->getInt('page', 1), $request->query->getInt('limit', 3)
+                $query, $request->query->getInt('page', 1), $request->query->getInt('limit', 3)
         );
 //        dump(get_class($paginator));
         return $this->render('front/galerija.html.twig', array(

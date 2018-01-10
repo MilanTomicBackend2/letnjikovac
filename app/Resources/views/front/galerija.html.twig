@@ -13,6 +13,7 @@
 
     <div class="breadcrumb">
         <h2>Галерија</h2>
+        <i class="fa fa-sort-amount-desc" aria-hidden="true">{{knp_pagination_sortable(gallery,'сортирај по датуму','img.id')}}</i>
     </div>
 
     {% if gallery is not empty %}   
@@ -24,7 +25,7 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="portfolio-items isotopeWrapper clearfix" id="3">							  
-                                    <article class="col-md-4 isotopeItem webdesign">
+                                    <article class="col-md-12 isotopeItem webdesign">
                                         <div class="portfolio-item">
                                             <div class="wow rotateInUpLeft" data-animation-delay="4.8s">
                                                 <img src="{{ vich_uploader_asset(gal, 'imageFile') }}" alt="welcome" />
@@ -38,34 +39,7 @@
                                         </div>
                                     </article>
 
-                                    <article class="col-md-4 isotopeItem photography">
-                                        <div class="portfolio-item">
-                                            <div class="wow bounceIn">
-                                                <img src="{{ vich_uploader_asset(gal, 'imageFile') }}" alt="" />
-                                            </div>
-                                            <div class="portfolio-desc align-center">
-                                                <div class="folio-info">
-                                                    <h5><a href="">{{gal.title}}</a></h5>
-                                                    <a href="{{ vich_uploader_asset(gal, 'imageFile') }}" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                                                </div>										   
-                                            </div>
-                                        </div>
-                                    </article>
-
-
-                                    <article class="col-md-4 isotopeItem photography">
-                                        <div class="portfolio-item">
-                                            <div class="wow rotateInDownRight">
-                                                <img src="{{ vich_uploader_asset(gal, 'imageFile') }}" alt="" />
-                                            </div>	
-                                            <div class="portfolio-desc align-center">
-                                                <div class="folio-info">
-                                                    <h5><a href="">{{gal.title}}</a></h5>
-                                                    <a href="{{ vich_uploader_asset(gal, 'imageFile') }}" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                                                </div>										   
-                                            </div>
-                                        </div>
-                                    </article>
+                                 
 
 
                                 </div>                                       
